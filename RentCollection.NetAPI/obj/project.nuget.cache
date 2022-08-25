@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "7Wonn4lVIREv2ZVDgU+iQnHNzc+PRjBjWlHgj5VUiRLfzPxfa9z+l5MqaeLNhQvK3MlEhU35u1NV8wMvdgkT5w==",
+  "success": true,
+  "projectFilePath": "/Volumes/Study/CS/DotNet/API/RentCollection.NetAPI/RentCollection.NetAPI/RentCollection.NetAPI.csproj",
+  "expectedPackageFiles": [
+    "/Users/ishwarbaisla/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/Users/ishwarbaisla/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/ishwarbaisla/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "/Users/ishwarbaisla/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "/Users/ishwarbaisla/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "/Users/ishwarbaisla/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
