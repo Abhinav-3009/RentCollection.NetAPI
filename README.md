@@ -3,7 +3,8 @@
 
 
 # Database
-```sqlCREATE DATABASE RentCollection;
+```sql
+CREATE DATABASE RentCollection;
 
 USE RentCollection;
 
@@ -55,9 +56,9 @@ CREATE TABLE Documents (
     DocumentTypeId INT NOT NULL,
     DocumentName VARCHAR(100) NOT NULL,
     PRIMARY KEY(DocumentId),
-    FOREIGN KEY(TenantId) REFERENCES Tenants(TenantId) ON DELETE CASCADE,
-    FOREIGN KEY(DocumentTypeId) REFERENCES DocumentType(DocumentTypeId) ON DELETE CASCADE
+    FOREIGN KEY(TenantId) REFERENCES Tenants(TenantId) ON DELETE CASCADE
 );
+-- FOREIGN KEY(DocumentTypeId) REFERENCES DocumentType(DocumentTypeId) ON DELETE CASCADE
 
 
 CREATE TABLE Allocation (
@@ -68,9 +69,9 @@ CREATE TABLE Allocation (
     IsActive BIT NOT NULL DEFAULT(0),
     IsDeleted BIT NOT NULL DEFAULT(0),
     PRIMARY KEY (AllocationId),
-    FOREIGN KEY(RentalId) REFERENCES Rentals(RentalId) ON DELETE CASCADE,
-    FOREIGN KEY(TenantId) REFERENCES Tenants(TenantId) ON DELETE CASCADE
+    FOREIGN KEY(RentalId) REFERENCES Rentals(RentalId) ON DELETE CASCADE
 );
+-- FOREIGN KEY(TenantId) REFERENCES Tenants(TenantId) ON DELETE CASCADE
 
 CREATE TABLE ElectricityMeterReading (
     MeterReadingId INT NOT NULL IDENTITY(1, 1),
@@ -107,8 +108,8 @@ CREATE TABLE InvoiceItem (
     Date DATE NOT NULL,
     PRIMARY KEY(InvoiceItemId),
     FOREIGN KEY(InvoiceId) REFERENCES Invoices(InvoiceId) ON DELETE CASCADE,
-    FOREIGN KEY(InvoiceItemCategoryId) REFERENCES InvoiceItemCategory(InvoiceItemCategoryId) ON DELETE CASCADE
 );
+-- FOREIGN KEY(InvoiceItemCategoryId) REFERENCES InvoiceItemCategory(InvoiceItemCategoryId) ON DELETE CASCADE
 
 CREATE TABLE AutomatedRaisedPayments (
     AutomatedRaisedPaymentId INT NOT NULL IDENTITY(1, 1),
@@ -117,9 +118,10 @@ CREATE TABLE AutomatedRaisedPayments (
     Description VARCHAR(100) NOT NULL,
     Amount FLOAT NOT NULL,
     PRIMARY KEY(AutomatedRaisedPaymentId),
-    FOREIGN KEY(AllocationId) REFERENCES Allocation(AllocationId) ON DELETE CASCADE,
-    FOREIGN KEY(InvoiceItemCategoryId) REFERENCES InvoiceItemCategory(InvoiceItemCategoryId) ON DELETE CASCADE
+    FOREIGN KEY(AllocationId) REFERENCES Allocation(AllocationId) ON DELETE CASCADE
 );
+-- FOREIGN KEY(InvoiceItemCategoryId) REFERENCES InvoiceItemCategory(InvoiceItemCategoryId) ON DELETE CASCADE
+
 
 CREATE TABLE ModeOfPayment (
     ModeOfPaymentId INT NOT NULL IDENTITY(1, 1),
@@ -128,8 +130,8 @@ CREATE TABLE ModeOfPayment (
 );
 
 INSERT INTO ModeOfPayment VALUES 
-(NULL, 'Cash'),
-(NULL, 'Online');
+('Cash'),
+('Online');
 
 CREATE TABLE Payments (
     PaymentId INT NOT NULL IDENTITY(1, 1),
