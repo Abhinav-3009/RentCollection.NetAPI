@@ -3,8 +3,7 @@
 
 
 # Database
-```sql
-CREATE DATABASE RentCollection;
+```sqlCREATE DATABASE RentCollection;
 
 USE RentCollection;
 
@@ -40,13 +39,24 @@ CREATE TABLE Tenants (
     FOREIGN KEY(UserId) REFERENCES Users(UserId) ON DELETE CASCADE
 );
 
+
+CREATE TABLE DocumentType (
+    DocumentTypeId INT NOT NULL IDENTITY(1, 1),
+    UserId INT NOT NULL,
+    Code VARCHAR(50) NOT NULL,
+    PRIMARY KEY(DocumentTypeId),
+    FOREIGN KEY(UserId) REFERENCES Users(UserId) ON DELETE CASCADE,
+    CONSTRAINT Document_Type UNIQUE(UserId, Code)
+);
+
 CREATE TABLE Documents (
     DocumentId INT NOT NULL IDENTITY(1, 1),
     TenantId INT NOT NULL,
+    DocumentTypeId INT NOT NULL,
     DocumentName VARCHAR(100) NOT NULL,
-    DocumentDescription VARCHAR(200),
     PRIMARY KEY(DocumentId),
-    FOREIGN KEY(TenantId) REFERENCES Tenants(TenantId) ON DELETE CASCADE
+    FOREIGN KEY(TenantId) REFERENCES Tenants(TenantId) ON DELETE CASCADE,
+    FOREIGN KEY(DocumentTypeId) REFERENCES DocumentType(DocumentTypeId) ON DELETE CASCADE
 );
 
 
@@ -93,6 +103,8 @@ CREATE TABLE InvoiceItem (
     InvoiceId INT NOT NULL,
     InvoiceItemCategoryId INT NOT NULL,
     Description VARCHAR(100) NOT NULL,
+    Amount FLOAT NOT NULL,
+    Date DATE NOT NULL,
     PRIMARY KEY(InvoiceItemId),
     FOREIGN KEY(InvoiceId) REFERENCES Invoices(InvoiceId) ON DELETE CASCADE,
     FOREIGN KEY(InvoiceItemCategoryId) REFERENCES InvoiceItemCategory(InvoiceItemCategoryId) ON DELETE CASCADE
